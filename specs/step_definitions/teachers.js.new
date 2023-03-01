@@ -1,0 +1,53 @@
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+
+Given('that I am logged in', () => {
+  // TODO: implement step
+});
+
+Given('That I am on the create page', () => {
+  // TODO: implement step
+});
+
+When('I click on the email box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on the password box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on the first-name box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on the last-name box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on the initials box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on the phone box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on color and select a color', () => {
+  // TODO: implement step
+});
+
+When('I click on roles and select a role', () => {
+  // TODO: implement step
+});
+
+When('Lastly click on the save button', () => {
+  // TODO: implement step
+});
+
+Then('I go to the teachers page', () => {
+  // TODO: implement step
+});
+
+Then('I should have created a teacher', () => {
+  // TODO: implement step
+});

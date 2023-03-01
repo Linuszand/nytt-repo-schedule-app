@@ -1,0 +1,65 @@
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+
+Given('that I am on the login page', () => {
+  // TODO: implement step
+});
+
+When('I click on email box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on password box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on login button', () => {
+  // TODO: implement step
+});
+
+Then('I am on home page', () => {
+  // TODO: implement step
+});
+
+Given('that I am on the login page', () => {
+  // TODO: implement step
+});
+
+When('I click on email box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on password box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on login button', () => {
+  // TODO: implement step
+});
+
+Then('I am on login page', () => {
+  // TODO: implement step
+});
+
+Given('that I am on the login page', () => {
+  // TODO: implement step
+});
+
+When('I click on email box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on password box and type {string}', (a) => {
+  // TODO: implement step
+});
+
+When('I click on login button', () => {
+  // TODO: implement step
+});
+
+When('I click on Logout button', () => {
+  // TODO: implement step
+});
+
+Then('I am on login page', () => {
+  // TODO: implement step
+});

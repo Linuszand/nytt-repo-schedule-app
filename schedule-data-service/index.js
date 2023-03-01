@@ -98,8 +98,7 @@ server.post('/data/generate-schedule', generateSchedule)
 
 server.get(
   '/data/:table',
-  function getTable( request, response )
-  { // but limit which tables to query with ACL
+  function getTable(request, response) { // but limit which tables to query with ACL
     let table = request.params.table; // Name of the table, taken from route string
     let hq = request.query;  // The URL query, the part after ? in URL
     let filter = hq?.filter; // Filter array in URL query
@@ -110,20 +109,17 @@ server.get(
     // Start from a basic SQL query and continue building the SQL in later steps
     let sql = "SELECT *, count(*) OVER() AS total_count FROM " + table;
     // Continue building SQL query, update for filter
-    if ( filter )
-    {
-      filter = JSON.parse( filter );
+    if (filter) {
+      filter = JSON.parse(filter);
     }
     // Continue building SQL query, update for sort order
-    if ( sort )
-    {
-      sort = JSON.parse( sort );
-      sql += ` ORDER BY ${sort[ 0 ] } ${ sort[ 1 ] }`; //<column name> and <order>
+    if (sort) {
+      sort = JSON.parse(sort);
+      sql += ` ORDER BY ${sort[0]} ${sort[1]}`; //<column name> and <order>
     }
 
     // Support for pagination
-    if (range)
-    {
+    if (range) {
       // Convert from JSON to Object
       range = JSON.parse(range);
       // Continue building SQL query with data for items per page
@@ -139,24 +135,23 @@ server.get(
     let results = db.prepare(sql).all();
 
     // Make sure result is an array, loop through it and convert some props so that React-Admin understands it
-    if ( Array.isArray( results ) )
-    {
+    if (Array.isArray(results)) {
       // Loop through all records
       for (let record of results) {
         // Remove the password prop if exists before transmitting the object
-        if (Object.keys( record ).includes( 'password' ) ) delete record.password;
+        if (Object.keys(record).includes('password')) delete record.password;
         // If the current record contains the 'roles' prop, convert it from a string to an array
-        if (Object.keys( record ).includes( 'roles' ) ) record.roles = ( record.roles == '' || record.roles == null ) ? record.roles = [] : record.roles.split( ',' );
+        if (Object.keys(record).includes('roles')) record.roles = (record.roles == '' || record.roles == null) ? record.roles = [] : record.roles.split(',');
         // If the current record contains the 'hide' prop, convert it from an integer to a boolean
-        if ( Object.keys( record ).includes( 'hide' ) ) record.hide = ( record.hide == null || record.hide == 0 ) ? false : true;
+        if (Object.keys(record).includes('hide')) record.hide = (record.hide == null || record.hide == 0) ? false : true;
       }
     }
 
 
     // Continue building Content-Range
-    if (results[ 0 ]?.total_count) cr += `/${results[ 0 ].total_count}`;
-    response.setHeader( 'Content-Range', cr );
-    response.setHeader( 'X-Total-Count', cr );
+    if (results[0]?.total_count) cr += `/${results[0].total_count}`;
+    response.setHeader('Content-Range', cr);
+    response.setHeader('X-Total-Count', cr);
 
     response.json(results);
   }
@@ -194,3 +189,7 @@ server.delete(
     response.json(result)
   }
 )
+server.get("/done", async (req, res) => {
+  setTimeout(process.exit, 2000)
+  res.json({ done: "done", exiting: "in 2 seconds" })
+})

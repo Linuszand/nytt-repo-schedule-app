@@ -28,4 +28,4 @@ jobs:
         cache: 'npm'
     - run: cd admin && npm install && npm audit fix && cd .. && cd schedule-data-service && npm install && npm audit fix && cd .. && npm install && npm audit fix
     - run: cd admin && npm run build && cd ..
-    - run: npm run start
+    - run: npm run git-action-run-test
